@@ -18,9 +18,20 @@ install_eksanywhere() {
   sudo mv ./eksctl-anywhere /usr/local/bin/
 }
 
+install_istio() {
+  echo "Installing istio"
+  curl -L https://istio.io/downloadIstio | sh -
+}
+
 deploy_eksanywhere() {
   eksctl anywhere create cluster -f dev-cluster.yaml
 }
 
+install_kind() {
+  echo "Installing kind"
+  curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.14.0/kind-linux-amd64
+  chmod +x ./kind
+  sudo mv ./kind /usr/local/bin/kind
+}
 
 $1
